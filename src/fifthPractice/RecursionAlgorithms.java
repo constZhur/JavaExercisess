@@ -8,8 +8,35 @@ public class RecursionAlgorithms {
 Дано натуральное число n>1.
 Выведите все простые множители этого числа в порядке не убывания с учетом кратности.
      */
-    private int PrimeNumbers (int number){
-        return 0;
+    private static boolean isNumPrime(int number){
+        return isNumPrime(number, 2);
+    }
+    private static boolean isNumPrime(int number, int div){
+        if(number == 2) return true;
+        if(number % div == 0) {
+            return false;
+        }
+        if(div > Math.sqrt(number)){
+            return true;
+        }
+        return isNumPrime(number, div+1);
+    }
+
+    private static void factorization(int number) {factorization(number, 2);}
+    private static void factorization(int number, int div){
+        if(number == 2) {
+            System.out.println("2");
+            return;
+        }
+        if(number <= 1) return;
+        if(!isNumPrime(div)) {
+            factorization(number, div+1);
+            return;
+        }
+        if(number % div == 0){
+            System.out.print(div +", ");
+            factorization(number / div, div);
+        }else factorization(number, div+1);
     }
     /* Задание 8
 Дано слово, состоящее только из строчных латинских букв. Проверьте,
