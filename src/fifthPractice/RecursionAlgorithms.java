@@ -1,8 +1,31 @@
 package fifthPractice;
 
+
+import java.util.Scanner;
+
 public class RecursionAlgorithms {
     public static void main(String[] args) {
+        System.out.println("Задание 7:");
+        int num;
+        Scanner input =  new Scanner(System.in);
+        System.out.println("Введите целое число: ");
+        num = input.nextInt();
+        factorization(num);
 
+        System.out.println("/nЗадание 8:");
+        System.out.println("Введите исходную строку: ");
+        String str = input.nextLine();
+        isPalindrome(str);
+
+        System.out.println("/nЗадание 9:");
+        System.out.println("Введите пару чисел: ");
+        int first = input.nextInt(), second = input.nextInt();
+        countSequences(first, second);
+
+        System.out.println("/nЗадание 10:");
+        System.out.println("Введите целое число: ");
+        num = input.nextInt();
+        reverseNumber(num);
     }
     /* Задание 7
 Дано натуральное число n>1.
@@ -22,7 +45,9 @@ public class RecursionAlgorithms {
         return isNumPrime(number, div+1);
     }
 
-    private static void factorization(int number) {factorization(number, 2);}
+    private static void factorization(int number) {
+        factorization(number, 2);
+    }
     private static void factorization(int number, int div){
         if(number == 2) {
             System.out.println("2");
@@ -33,16 +58,17 @@ public class RecursionAlgorithms {
             factorization(number, div+1);
             return;
         }
-        if(number % div == 0){
+        if (number % div == 0){
             System.out.print(div +", ");
             factorization(number / div, div);
-        }else factorization(number, div+1);
+        }
+        else factorization(number, div+1);
     }
     /* Задание 8
 Дано слово, состоящее только из строчных латинских букв. Проверьте,
 является ли это слово палиндромом. Выведите YES или NO.
      */
-    private void isPalindrome(String str){
+    private static void isPalindrome(String str){
         if(str.length() <= 1) {
             System.out.println("YES");
             return;
@@ -57,7 +83,7 @@ public class RecursionAlgorithms {
                 return;
             }
         }
-        if(str.charAt(0) != str.charAt(str.length()-1)){
+        if (str.charAt(0) != str.charAt(str.length()-1)){
             System.out.println("NO");
             return;
         }
@@ -67,7 +93,7 @@ public class RecursionAlgorithms {
 Даны числа a и b. Определите, сколько существует последовательностей
 из a нулей и b единиц, в которых никакие два нуля не стоят рядом.
      */
-    private int countSequences(int a, int b) {
+    private static int countSequences(int a, int b) {
         if (a == 0) return 1;
         if (a == 1) return b+1;
         if (a > 1 && b == 0) return 0;
@@ -77,7 +103,10 @@ public class RecursionAlgorithms {
 Дано число n, десятичная запись которого не содержит нулей. Получите
 число, записанное теми же цифрами, но в противоположном порядке.
      */
-    private int reverseNumber(int startNumber, int finalNumber) {
+    private static int reverseNumber(int startNumber) {
+        return reverseNumber(startNumber, 0);
+    }
+    private static int reverseNumber(int startNumber, int finalNumber) {
         if (startNumber == 0) return finalNumber;
         return reverseNumber(startNumber/10, 10*finalNumber + startNumber%10);
     }
