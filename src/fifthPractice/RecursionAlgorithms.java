@@ -12,17 +12,17 @@ public class RecursionAlgorithms {
         num = input.nextInt();
         factorization(num);
 
-        System.out.println("/nЗадание 8:");
+        System.out.println("\nЗадание 8:");
         System.out.println("Введите исходную строку: ");
         String str = input.nextLine();
         isPalindrome(str);
 
-        System.out.println("/nЗадание 9:");
+        System.out.println("\nЗадание 9:");
         System.out.println("Введите пару чисел: ");
         int first = input.nextInt(), second = input.nextInt();
         countSequences(first, second);
 
-        System.out.println("/nЗадание 10:");
+        System.out.println("\nЗадание 10:");
         System.out.println("Введите целое число: ");
         num = input.nextInt();
         reverseNumber(num);
